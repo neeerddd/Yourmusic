@@ -126,3 +126,72 @@ input::placeholder {
   background: #42a5f5;
   box-shadow: 0 0 15px rgba(33, 150, 243, 0.6);
 }
+/* 📱 Адаптивность для телефонов */
+@media (max-width: 600px) {
+  body {
+    flex-direction: column;
+    padding: 20px;
+    height: auto;
+  }
+
+  .container {
+    width: 100%;
+    padding: 30px 20px;
+    border-radius: 15px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .search-box {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+  }
+
+  input {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  #search-btn {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 16px;
+  }
+
+  #results {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .result-item {
+    width: 100%;
+    padding: 20px 15px 60px;
+  }
+
+  .result-item p {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .result-item audio {
+    width: 100%;
+    transform: none;
+  }
+
+  .result-item a {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 12px;
+    font-size: 13px;
+    padding: 6px 14px;
+  }
+}
+
