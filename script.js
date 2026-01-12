@@ -1,29 +1,27 @@
 const searchBtn = document.getElementById("search-btn");
 const results = document.getElementById("results");
 
-const songs = [
-  { title: "1", file: "Napalm_Death_-_Legacy_Was_Yesterday-world79.spcs.bio.mp3" },
-  { title: "", file: "Без названия.mp3" }
-];
-
 searchBtn.addEventListener("click", () => {
-  const query = document.getElementById("search").value.toLowerCase();
-  results.innerHTML = ""; 
-  
-  const found = songs.filter(song => song.title.toLowerCase().includes(query));
-  
-  if (found.length === 0) {
-    results.innerHTML = "<p>No songs found.</p>";
-  } else {
-    found.forEach(song => {
-      const div = document.createElement("div");
-      div.className = "result-item"
-      div.innerHTML = `
-        <p>${song.title}</p>
-        <audio controls src="${song.file}"></audio>
-        <a href="${song.file}" download>⬇️ Download</a>
-      `;
-      results.appendChild(div);
-    });
+  const query = document.getElementById("search").value.trim();
+
+  if (!query) {
+    results.innerHTML = "<p>Enter song name</p>";
+    return;
   }
+
+  results.innerHTML = `
+    <div class="result-item">
+      <p>Search "${query}" on:</p>
+      <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(query)}" target="_blank">
+        YouTube
+      </a><br><br>
+      <a href="https://soundcloud.com/search?q=${encodeURIComponent(query)}" target="_blank">
+        SoundCloud
+      </a><br><br>
+      <a href="https://open.spotify.com/search/${encodeURIComponent(query)}" target="_blank">
+        Spotify
+      </a>
+    </div>
+  `;
 });
+
